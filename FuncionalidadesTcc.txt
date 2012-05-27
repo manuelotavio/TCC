@@ -17,7 +17,7 @@ Funcionalidades:
 
 Tecnologias:
 1) Será um sistema WEB.
-2) Vou usar banco de dados MySql.
-3) Vou usar java para fazer as funcionalidades do site.
+2) banco de dados MySql.
+3) java para fazer as funcionalidades do site.
 
 OBS: Podem surgir novas ideias no decorrer do trabalho que podem acrescentar novas funcinalidades ao sistema ou subustituir alguma ja listada.
