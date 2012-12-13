@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title><ui:insert name="title">Help Desk</ui:insert></title>
+	<link rel="stylesheet" type="text/css" href="layout.css" />
+	<ui:insert name="head" />
+
+</h:head>
+
+<h:body>
+
+	<div id="cabecalho" style="border: 2px solid black">
+		<ui:insert name="cabecalho">
+			<ui:include src="cabecalho.xhtml" />
+		</ui:insert>
+	</div>
+	
+	<div id="centro">
+		<f:view contentType="text/html; charset=UTF-8" encoding="UTF-8">
+			<ui:insert name="centro">
+			</ui:insert>
+		</f:view>
+	</div>
+
+</h:body>
+
+</html>

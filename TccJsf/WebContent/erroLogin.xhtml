@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="/template.xhtml">
+	<ui:define name="centro">
+	
+			<h:form id="formulario" action="Acesso">
+			<div class="acesso">
+				<h:panelGrid columns="2" rendered="#{loginBean.usuarioLogado!=null}">
+					<h:outputText value="#{loginBean.usuarioLogado.cpf}" />
+					<h:outputText value="#{loginBean.usuarioLogado.nome}" />
+					<h:commandButton action="#{loginBean.logout}" value="Sair" />
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" rendered="#{loginBean.usuarioLogado==null}" styleClass="acesso" border="1">
+					<h:outputLabel  styleClass="log" value="Usuario:" />
+					<h:inputText styleClass="log" value="#{loginBean.cpf}" />
+	
+					<h:outputLabel styleClass="log" value="Senha:" />
+					<h:inputSecret styleClass="log" value="#{loginBean.senha}" />
+	
+				</h:panelGrid>
+					<!-- <h:commandLink >Esqueçi minha senha</h:commandLink ><br/> -->
+					<h:outputLabel styleClass="erroLogin">Usuario ou Senha Invalido!</h:outputLabel><br/>
+					<h:commandButton styleClass="botaoLogar" action="#{loginBean.login}" value="Login" />
+			</div>
+			</h:form>
+	</ui:define>
+</ui:composition>
+</html>

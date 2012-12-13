@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<link rel="stylesheet" type="text/css" href="layout.css" />
+
+</head>
+
+<h:body>
+	<ui:composition template="/templateAdm.xhtml">
+		<ui:define name="centro">
+		
+		<div class="titulo">
+		<h:button styleClass="criarUsuario" outcome="criarUsuario" value="Criar Usuario"/>
+
+		<h4 class="usuarios"></h4>
+		</div>
+		
+		<p:dataTable styleClass="tabelaInicial" columnClasses="4" value="#{listarUsuarioBean.usuarios}" var="us" width="680" border="1">
+				
+				<f:facet name="header">Usuarios</f:facet>
+				
+				<p:column headerClass="tamanho1" footerClass="tamanho1">
+					<f:facet styleClass="protocolo" name="header">Nome</f:facet>
+					#{us.nome}
+				</p:column>
+				
+				<p:column headerClass="tamanho2" footerClass="tamanho2">
+					<f:facet styleClass="data" name="header">Tipo Usuario</f:facet>
+					#{us.tipousuario.tipo}
+				</p:column>
+				
+				<p:column headerClass="tamanho3" footerClass="tamanho3">
+					<f:facet styleClass="protocolo" name="header">Status</f:facet>
+					#{us.statususuario.status}
+				</p:column>
+				
+				<p:column headerClass="tamanho3" footerClass="tamanho3">
+					<f:facet styleClass="protocolo" name="header">Detalhar</f:facet>
+					<h:button value="Detalhar" outcome="atualizarUsuario.xhtml" />
+					
+				</p:column>h:column>
+				
+			</p:dataTable>
+	
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

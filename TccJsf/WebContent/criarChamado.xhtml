@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/templateUsuario.xhtml">
+	<ui:define name="centro">
+
+		<div class="titulo">Criar Chamado</div>
+		<h:form>
+
+			<p:messages />
+
+			<div class="assuntochamado">
+
+				<h:outputLabel for="assunto" styleClass="assunto" value="Assunto" />
+				<br />
+				<p:inputText id="assunto" required="true" styleClass="descAssunto"
+					value="#{criarChamadoBean.chamado.assunto}" label="Assunto">
+					<f:validateLength minimum="5" />
+				</p:inputText>
+				<p:message for="assunto" display="icon" />
+				<br />
+
+				<h:outputLabel for="descricao" styleClass="desc" value="Descrição" />
+				<br />
+				<p:inputTextarea id="descricao" required="true"
+					styleClass="descricao"
+					value="#{criarChamadoBean.descricaoChamado.descricao}"
+					label="Descricao">
+				</p:inputTextarea>
+				<p:message for="assunto" display="icon" />
+			</div>
+
+			<div class="prioridade">
+				<label class="prioridade">Prioridade: </label>
+				<h:selectOneMenu value="#{criarChamadoBean.prioridadeChamado}">
+					<f:selectItem itemLabel="Normal" itemValue="1" />
+					<f:selectItem itemLabel="Alta" itemValue="2" />
+					<f:selectItem itemLabel="Baixa" itemValue="3" />
+				</h:selectOneMenu>
+				<br />
+
+				<h:commandButton styleClass="criarChamado"
+					action="#{criarChamadoBean.cadastrar}" value="Salvar" />
+
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

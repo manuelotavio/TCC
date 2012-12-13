@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet" type="text/css" href="layout.css" />
+</h:head>
+
+<h:body>
+	<div class="menu">
+		<div class="botoes">
+			<h:link value="Pendentes" outcome="chamadosPendentesAdm.xhtml" />
+			<h:link value="Finalizados" outcome="chamadosFinalizadosAdm.xhtml" />
+			<h:link value="Usuarios" outcome="usuarios.xhtml" />
+			<h:link value="Modulo usuario" outcome="telaInicialUsuario.xhtml" />
+			
+		</div>
+		
+		<div class="userAdm">
+			<h:outputText value="#{loginBean.usuarioLogado.tipousuario}  " />
+			<h:outputText value="#{loginBean.usuarioLogado.nome}" />
+		</div>
+			<h:link  styleClass="botaoSair" action="#{loginBean.logout}" value="Sair" outcome="login.xhtml" />
+	</div>
+</h:body>
+
+</html>

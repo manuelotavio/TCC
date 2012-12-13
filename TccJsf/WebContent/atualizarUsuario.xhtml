@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<link rel="stylesheet" type="text/css" href="layout.css" />
+
+</head>
+
+<h:body>
+	<ui:composition template="/templateAdm.xhtml">
+		<ui:define name="centro">
+
+		<!-- div class="titulo">
+				<h4 class="criarUsuarios">Criar usuarios</h4>
+			</div> -->
+			
+			<h:form id="form">  
+  
+    <p:panel id="panel" header="Criar usuario">  
+  
+        <p:messages id="msgs"/>  
+  
+        <h:panelGrid columns="3">  
+            <h:outputLabel for="nome" value="Nome: *" />  
+            <p:inputText id="nome" value="#{criarUsuarioBean.usuario.nome}" required="true" label="Nome">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="nome" display="icon"/>  
+  
+            <h:outputLabel for="cpf" value="CPF: *" />  
+            <p:inputText id="cpf" value="#{criarUsuarioBean.usuario.cpf}" label="Surname" required="CPF">  
+                <f:validateLength minimum="2" />  
+                <p:ajax update="msgSurname" event="keyup" />  
+            </p:inputText>  
+            <p:message for="cpf" id="msgSurname" display="icon"/>  
+            
+                   <h:outputLabel for="rg" value="RG: *" />  
+            <p:inputText id="rg" value="#{criarUsuarioBean.usuario.rg}" required="true" label="RG">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="rg" display="icon"/>
+            
+                   <h:outputLabel for="telefone" value="Telefone: *" />  
+            <p:inputText id="telefone" value="#{criarUsuarioBean.usuario.telefone}" required="true" label="Telefone">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="telefone" display="icon"/>
+            
+                   <h:outputLabel for="email" value="E-mail: *" />  
+            <p:inputText id="email" value="#{criarUsuarioBean.usuario.email}" required="true" label="E-mail">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="email" display="icon"/>
+            
+                         <h:outputLabel for="senha" value="Senha: *" />  
+            <p:inputText id="senha" value="#{criarUsuarioBean.usuario.senha}" required="true" label="Senha">  
+                <f:validateLength minimum="2" />  
+            </p:inputText>  
+            <p:message for="senha" display="icon"/>
+            
+            <div class="prioridade">
+				<label class="prioridade">Tipo de usuario: </label>
+				<h:selectOneMenu value="#{criarUsuarioBean.tipoUsuario}">
+					<f:selectItem itemLabel="Usuario" itemValue="1" />
+					<f:selectItem itemLabel="Atendente" itemValue="2" />
+					<f:selectItem itemLabel="Administrador" itemValue="3" />
+				</h:selectOneMenu>
+			</div>
+            
+        </h:panelGrid>  
+  
+        <p:commandButton id="btn" value="Atualizar" update="panel" actionListener="#{criarUsuarioBean.criar}"/>
+        <p:commandButton id="btn1" value="Bloquear" update="panel" actionListener="#{criarUsuarioBean.criar}"/>  
+    </p:panel>  
+  
+</h:form>  
+	
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>

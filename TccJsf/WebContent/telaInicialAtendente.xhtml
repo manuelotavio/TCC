@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<link rel="stylesheet" type="text/css" href="layout.css" />
+
+</head>
+
+<h:body>
+	<ui:composition template="/templateAtendente.xhtml">
+		<ui:define name="centro">
+
+			<p:dataTable columnClasses="6"
+				value="#{chamadoAndamentoBean.chamados}" var="ch" width="680"
+				paginator="true" rowsPerPageTemplate="5,10,15" rows="5">
+
+				<f:facet name="header">Chamados em Aberto</f:facet>
+
+				<p:column style="font-size:9" styleClass="tabelaInicial">
+					<f:facet styleClass="protocolo" name="header">Protocolo</f:facet>
+					#{ch.protocolo}
+				</p:column>
+
+				<p:column headerText="Data - Hora" styleClass="tabelaInicial">
+					<h:outputText value="#{ch.dataCriacao}">
+						<f:convertDateTime pattern="dd/MM/yyyy - HH:mm" />
+					</h:outputText>
+
+				</p:column>
+
+				<p:column styleClass="tabelaInicial">
+					<f:facet styleClass="status" name="header">Status</f:facet>
+					#{ch.statuschamado.tipo}
+				</p:column>
+
+				<p:column styleClass="tabelaInicial">
+					<f:facet styleClass="prazo" name="header">Prazo</f:facet>
+					#{ch.prazo}
+				</p:column>
+
+
+				<p:column styleClass="tabelaInicial">
+					<f:facet styleClass="assunto" name="header">Assunto</f:facet>
+					#{ch.assunto}
+				</p:column>
+
+				<p:column styleClass="tabelaInicial">
+					<f:facet name="header">Atender</f:facet>
+					<h:commandButton type="button"
+						onclick="Chamado_#{ch.protocolo}.show()" value="Atender">
+					</h:commandButton>
+
+					<p:dialog widgetVar="Chamado_#{ch.protocolo}" width="800"
+						height="400" header="Assunto: #{ch.assunto}">
+
+						<h:panelGrid columns="2" cellspacing="20" style="margin-left:0px;">
+							<h:outputLabel value="Protocolo: " />
+							<h:outputText value="#{ch.protocolo}" />
+
+							<h:outputLabel value="Descrição: " />
+							<h:outputText value="#{ch.descricaochamados}" />
+						</h:panelGrid>
+
+						<p:inputTextarea rows="10" style="width:760px; margin-top:30px;"></p:inputTextarea>
+						<br />
+
+						<h:panelGrid id="descricao" required="true"
+							value="#{finalizarChamadoBean.descricaoChamado.descricao}"
+							label="Descricao" columns="2" cellspacing="10"
+							style="margin-right:auto; margin-left:auto;">
+
+							<h:commandButton type="submit" action="#{finalizarChamadoBean.finalizar}"
+								value="Finalizar" />
+							<h:commandButton action="#{criarChamadoBean.cadastrar}"
+								value="Pendenciar" />
+						</h:panelGrid>
+
+					</p:dialog>
+				</p:column>
+
+			</p:dataTable>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
